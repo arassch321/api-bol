@@ -8,8 +8,6 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// buat server nya
-app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
 
 app.get('/', (req, res) => {
     res.send('Tambahkan dibelakang URL dengan parameter: /api/:nama_tabel');
@@ -259,3 +257,6 @@ app.post('/api/komentar', (req, res) => {
         console.log('MySQL Disconnected...');
     });
 });
+
+// buat server nya
+app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
