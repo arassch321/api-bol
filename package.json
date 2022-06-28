@@ -1,0 +1,26 @@
+{
+    "name": "api-bol",
+    "version": "1.0.0",
+    "description": "API for Beauty of Lombok",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon ./index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/arassch321/api-bol.git"
+    },
+    "author": "muhammadaras4321@gmail.com",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/arassch321/api-bol/issues"
+    },
+    "homepage": "https://github.com/arassch321/api-bol#readme",
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "express": "^4.18.1",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.16"
+    }
+}
