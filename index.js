@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const koneksi = require('./config/database');
+const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -9,6 +10,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // buat server nya
 app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
+
+app.get('/', (req, res) => {
+    res.send('Hello World');
+})
 
 //get data Adat
 app.get('/api/adat', (req, res) => {
