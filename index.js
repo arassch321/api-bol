@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const koneksi = require('./config/database');
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 // set body parser
 app.use(bodyParser.json());
@@ -259,4 +259,6 @@ app.post('/api/komentar', (req, res) => {
 });
 
 // buat server nya
-app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
+app.listen(process.env.PORT || 3000, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
