@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
 //get data Adat
 app.get('/api/adat', (req, res) => {
 
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
+
     const querySql = 'SELECT * FROM budaya  WHERE jenis = 1';
 
     koneksi.query(querySql, (err, rows, field) => {
@@ -26,9 +31,19 @@ app.get('/api/adat', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 //get data kesenian
 app.get('/api/kesenian', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM budaya WHERE jenis = 2';
 
@@ -38,9 +53,19 @@ app.get('/api/kesenian', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 //get data kuliner
 app.get('/api/kuliner', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM budaya WHERE jenis = 3';
 
@@ -50,9 +75,19 @@ app.get('/api/kuliner', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 //get data etc budaya
 app.get('/api/etcb', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM budaya WHERE jenis = 4';
 
@@ -62,10 +97,20 @@ app.get('/api/etcb', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 
 //get data air terjun
 app.get('/api/airterjun', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM wisata WHERE jenis = 5';
 
@@ -75,9 +120,19 @@ app.get('/api/airterjun', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 //get data pantai
 app.get('/api/pantai', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM wisata WHERE jenis = 6';
 
@@ -87,9 +142,20 @@ app.get('/api/pantai', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
+
 //get data gunbuk
 app.get('/api/gunbuk', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM wisata WHERE jenis = 7';
 
@@ -99,9 +165,19 @@ app.get('/api/gunbuk', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 //get data etcw
 app.get('/api/etcw', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
 
     const querySql = 'SELECT * FROM wisata WHERE jenis = 8';
 
@@ -110,6 +186,11 @@ app.get('/api/etcw', (req, res) => {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
         }
         res.status(200).json({ success: true, data: rows });
+    });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
     });
 });
 // //get data budaya
@@ -129,6 +210,12 @@ app.get('/api/etcw', (req, res) => {
 
 //get data komentar
 app.get('/api/komentar', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
+
     const querySql = 'SELECT * FROM komentar';
 
     koneksi.query(querySql, (err, rows, fields) => {
@@ -137,10 +224,21 @@ app.get('/api/komentar', (req, res) => {
         }
         res.status(200).json({ success: true, data: rows });
     })
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
+    });
 });
 
 // // insert data komentar
 app.post('/api/komentar', (req, res) => {
+
+    koneksi.connect((err) => {
+        if (err) throw err;
+        console.log('MySQL Connected...');
+    });
+
     // buat variabel penampung data dan query sql
     const data = {...req.body };
     const querySql = 'INSERT INTO komentar SET ?';
@@ -154,5 +252,10 @@ app.post('/api/komentar', (req, res) => {
 
         // jika request berhasil
         res.status(201).json({ success: true, message: 'Berhasil insert data!' });
+    });
+
+    koneksi.end((err) => {
+        if (err) throw err;
+        console.log('MySQL Disconnected...');
     });
 });
