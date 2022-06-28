@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('Tambahkan dibelakang URL dengan parameter: /api/:nama_tabel');
 })
 
 //get data Adat
