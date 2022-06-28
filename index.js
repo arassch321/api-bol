@@ -14,43 +14,7 @@ app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));
 //get data Adat
 app.get('/api/adat', (req, res) => {
 
-    const querySql = 'SELECT * FROM budaya  WHERE jenis = 1';
-
-    koneksi.query(querySql, (err, rows, field) => {
-        if (err) {
-            return res.status(500).json({ message: 'Ada kesalahan', error: err });
-        }
-        res.status(200).json({ success: true, data: rows });
-    });
-});
-//get data kesenian
-app.get('/api/kesenian', (req, res) => {
-
-    const querySql = 'SELECT * FROM budaya WHERE jenis = 2';
-
-    koneksi.query(querySql, (err, rows, field) => {
-        if (err) {
-            return res.status(500).json({ message: 'Ada kesalahan', error: err });
-        }
-        res.status(200).json({ success: true, data: rows });
-    });
-});
-//get data kuliner
-app.get('/api/kuliner', (req, res) => {
-
-    const querySql = 'SELECT * FROM budaya WHERE jenis = 3';
-
-    koneksi.query(querySql, (err, rows, field) => {
-        if (err) {
-            return res.status(500).json({ message: 'Ada kesalahan', error: err });
-        }
-        res.status(200).json({ success: true, data: rows });
-    });
-});
-//get data etc budaya
-app.get('/api/etcb', (req, res) => {
-
-    const querySql = 'SELECT * FROM budaya WHERE jenis = 4';
+    const querySql = 'SELECT * FROM adat';
 
     koneksi.query(querySql, (err, rows, field) => {
         if (err) {
@@ -60,10 +24,10 @@ app.get('/api/etcb', (req, res) => {
     });
 });
 
-//get data air terjun
+//get data Adat
 app.get('/api/airterjun', (req, res) => {
 
-    const querySql = 'SELECT * FROM wisata WHERE jenis = 5';
+    const querySql = 'SELECT * FROM airterjun';
 
     koneksi.query(querySql, (err, rows, field) => {
         if (err) {
@@ -72,22 +36,10 @@ app.get('/api/airterjun', (req, res) => {
         res.status(200).json({ success: true, data: rows });
     });
 });
-//get data pantai
-app.get('/api/pantai', (req, res) => {
 
-    const querySql = 'SELECT * FROM wisata WHERE jenis = 6';
+app.get('/api/budaya', (req, res) => {
 
-    koneksi.query(querySql, (err, rows, field) => {
-        if (err) {
-            return res.status(500).json({ message: 'Ada kesalahan', error: err });
-        }
-        res.status(200).json({ success: true, data: rows });
-    });
-});
-//get data gunbuk
-app.get('/api/gunbuk', (req, res) => {
-
-    const querySql = 'SELECT * FROM wisata WHERE jenis = 7';
+    const querySql = 'SELECT * FROM budaya';
 
     koneksi.query(querySql, (err, rows, field) => {
         if (err) {
@@ -96,10 +48,22 @@ app.get('/api/gunbuk', (req, res) => {
         res.status(200).json({ success: true, data: rows });
     });
 });
-//get data etcw
+
+app.get('/api/etcb', (req, res) => {
+
+    const querySql = 'SELECT * FROM etcb';
+
+    koneksi.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+});
+
 app.get('/api/etcw', (req, res) => {
 
-    const querySql = 'SELECT * FROM wisata WHERE jenis = 8';
+    const querySql = 'SELECT * FROM etcw';
 
     koneksi.query(querySql, (err, rows, field) => {
         if (err) {
@@ -108,49 +72,81 @@ app.get('/api/etcw', (req, res) => {
         res.status(200).json({ success: true, data: rows });
     });
 });
-// //get data budaya
-// app.get('/api/budaya', (req, res) => {
 
-//     const querySql = 'SELECT * FROM budaya';
+app.get('/api/gunbuk', (req, res) => {
 
-//     koneksi.query(querySql, (err, rows, field) => {
-//         if (err) {
-//             return res.status(500).json({ message: 'Ada kesalahan', error: err });
-//         }
-//         res.status(200).json({ success: true, data: rows });
-//     });
-// });
+    const querySql = 'SELECT * FROM gunbuk';
 
-
-
-//get data komentar
-app.get('/api/komentar', (req, res) => {
-    const querySql = 'SELECT * FROM komentar';
-
-    koneksi.query(querySql, (err, rows, fields) => {
+    koneksi.query(querySql, (err, rows, field) => {
         if (err) {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
         }
         res.status(200).json({ success: true, data: rows });
-    })
+    });
+});
+
+app.get('/api/kesenian', (req, res) => {
+
+    const querySql = 'SELECT * FROM kesenian';
+
+    koneksi.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+});
+
+app.get('/api/komentar', (req, res) => {
+
+    const querySql = 'SELECT * FROM komentar';
+
+    koneksi.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+});
+
+app.get('/api/kuliner', (req, res) => {
+
+    const querySql = 'SELECT * FROM kuliner';
+
+    koneksi.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+});
+
+app.get('/api/pantai', (req, res) => {
+
+    const querySql = 'SELECT * FROM pantai';
+
+    koneksi.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
 });
 
 // // insert data komentar
-app.post('/api/komentar', (req, res) => {
-    // buat variabel penampung data dan query sql
-    const data = {...req.body };
-    const querySql = 'INSERT INTO komentar SET ?';
+// app.post('/api/komentar', (req, res) => {
+//     // buat variabel penampung data dan query sql
+//     const data = {...req.body };
+//     const querySql = 'INSERT INTO komentar SET ?';
 
-    // jalankan query
-    koneksi.query(querySql, data, (err, rows, field) => {
-        // error handling
-        if (err) {
-            return res.status(500).json({ message: 'Gagal insert data!', error: err });
-        }
+//     // jalankan query
+//     koneksi.query(querySql, data, (err, rows, field) => {
+//         // error handling
+//         if (err) {
+//             return res.status(500).json({ message: 'Gagal insert data!', error: err });
+//         }
 
-        // jika request berhasil
-        res.status(201).json({ success: true, message: 'Berhasil insert data!' });
-    });
-});
-
-
+//         // jika request berhasil
+//         res.status(201).json({ success: true, message: 'Berhasil insert data!' });
+//     });
+// });
