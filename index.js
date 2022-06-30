@@ -31,7 +31,7 @@ app.listen(process.env.PORT || 3000, function() {
 
 
 app.get('/', (req, res) => {
-    res.send('Tambahkan dibelakang URL dengan parameter: /api/:nama_tabel');
+    res.sendFile(__dirname + '/index.html');
 })
 
 //get data Adat
