@@ -9,9 +9,73 @@
 </head>
 
 <body>
-    <H1>API Beauty of Lombok</H1>
+    <div style="margin: 6%; ">
+        <h1>API Beauty of Lombok</h1><br>
+        <ul>
+            <h2>Wisata</h2>
+            <h4>Method: GET</h4>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/pantai" target="_blank">Pantai</a></h3>
+            </li>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/gunbuk" target="_blank">Gunung & Bukit</a></h3>
+            </li>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/airterjun" target="_blank">Air Terjun</a></h3>
+            </li>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/etcw" target="_blank">ETC Wisata</a></h3>
+            </li>
+        </ul>
+        <ul>
+            <br>
+            <h2>Budaya</h2>
+            <h4>Method: GET</h4>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/adat" target="_blank">Adat</a></h3>
+            </li>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/kesenian" target="_blank">Kesenian</a></h3>
+            </li>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/kuliner" target="_blank">Kuliner</a></h3>
+            </li>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/etcb" target="_blank">ETC Budaya</a></h3>
+            </li>
+        </ul>
 
-    <h5><a href="https://api-bol.herokuapp.com/api/adat">adat</a></h5>
+        <ul>
+            <br>
+            <h2>Komentar</h2>
+            <li>
+                <h4>Method: GET (findbyJenisid)</h4>
+                <h3>Budaya = (https://api-bol.herokuapp.com/api/komentarbudaya/:id)</h3>
+            </li>
+            <li>
+                <h4>Method: GET (findbyJenisid)</h4>
+                <h3>Wisata = https://api-bol.herokuapp.com/api/komentarwisata/:id</h3>
+            </li>
+            <li>
+                <h4>Method: POST </h4>
+                <p>example body: { "id_komentar": "21", "created_at": "2022-06-30", "komentar": "tes komentar", "nama": "arras", "email": "arras@gmail.com" }
+                </p>
+                <h3>Buat Komentar = (https://api-bol.herokuapp.com/api/komentar)</h3>
+            </li>
+        </ul>
+        <ul>
+            <br>
+            <h2>Saran</h2>
+            <li>
+                <h4>Method: POST </h4>
+                <p>example body: { "nama": "Arras", "email": "arras@gmail.com", "saranwb": "warnet", "lokasi": "pinggir jalan" }
+                </p>
+                <h3>Buat saran = (https://api-bol.herokuapp.com/api/saran)</h3>
+            </li>
+        </ul>
+
+    </div>
+
 </body>
 
 </html>
