@@ -1,9 +1,10 @@
 const bodyParser = require('body-parser');
-const pool = require('../config/database');
+const pool = require('./config/database');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-// const PORT = process.env.PORT || 8080;
+
+app.set('view engine', 'ejs');
 
 // set body parser
 app.use(bodyParser.json());
