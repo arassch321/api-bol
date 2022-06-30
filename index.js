@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 //get data Adat
 app.get('/api/adat', (req, res) => {
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM budaya  WHERE jenis = 1';
+    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi FROM budaya  WHERE jenis = 1';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -40,7 +40,7 @@ app.get('/api/adat', (req, res) => {
 //get data kesenian
 app.get('/api/kesenian', (req, res) => {
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM budaya WHERE jenis = 2';
+    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi FROM budaya WHERE jenis = 2';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -53,7 +53,7 @@ app.get('/api/kesenian', (req, res) => {
 //get data kuliner
 app.get('/api/kuliner', (req, res) => {
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM budaya WHERE jenis = 3';
+    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi FROM budaya WHERE jenis = 3';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -66,7 +66,7 @@ app.get('/api/kuliner', (req, res) => {
 //get data etc budaya
 app.get('/api/etcb', (req, res) => {
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM budaya WHERE jenis = 4';
+    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi FROM budaya WHERE jenis = 4';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -81,7 +81,7 @@ app.get('/api/etcb', (req, res) => {
 app.get('/api/airterjun', (req, res) => {
 
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM wisata WHERE jenis = 5';
+    const querySql = 'SELECT id_wisata, nama, desk, gambar, lokasi FROM wisata WHERE jenis = 5';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -95,7 +95,7 @@ app.get('/api/airterjun', (req, res) => {
 app.get('/api/pantai', (req, res) => {
 
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM wisata WHERE jenis = 6';
+    const querySql = 'SELECT id_wisata, nama, desk, gambar, lokasi FROM wisata WHERE jenis = 6';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -110,7 +110,7 @@ app.get('/api/pantai', (req, res) => {
 app.get('/api/gunbuk', (req, res) => {
 
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM wisata WHERE jenis = 7';
+    const querySql = 'SELECT id_wisata, nama, desk, gambar, lokasi FROM wisata WHERE jenis = 7';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -123,7 +123,7 @@ app.get('/api/gunbuk', (req, res) => {
 //get data etcw
 app.get('/api/etcw', (req, res) => {
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi, komentar_id_komentar FROM wisata WHERE jenis = 8';
+    const querySql = 'SELECT id_wisata, nama, desk, gambar, lokasi FROM wisata WHERE jenis = 8';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -135,13 +135,25 @@ app.get('/api/etcw', (req, res) => {
 });
 
 
-//get data komentar
-app.get('/api/komentar', (req, res) => {
+//get data komentar wisata
+app.get('/api/komentarwisata/:id', (req, res) => {
 
+    const querySql = 'SELECT * FROM komentar WHERE id_wisata = ?';
 
-    const querySql = 'SELECT * FROM komentar';
+    pool.query(querySql, [req.params.id], (err, rows, fields) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    })
+});
 
-    pool.query(querySql, (err, rows, fields) => {
+//get data komentar budaya
+app.get('/api/komentarbudaya/:id', (req, res) => {
+
+    const querySql = 'SELECT * FROM komentar WHERE id_budaya = ?';
+
+    pool.query(querySql, [req.params.id], (err, rows, fields) => {
         if (err) {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
         }
@@ -151,7 +163,7 @@ app.get('/api/komentar', (req, res) => {
 
 // // insert data komentar
 app.post('/api/komentar', (req, res) => {
-    const { nama, email, komentar } = req.body;
+    const { id_komentar, nama, created_at, email, komentar } = req.body;
 
     // buat variabel penampung data dan query sql
     const data = {...req.body };
