@@ -3,7 +3,7 @@ const pool = require('./config/database');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 
 // set body parser
 app.use(bodyParser.json());
@@ -24,8 +24,8 @@ app.use(function(req, res, next) {
 
 // buat server nya
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+app.listen(process.env.PORT || 3000, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 
