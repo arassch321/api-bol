@@ -47,6 +47,19 @@ app.get('/api/adat', (req, res) => {
     });
 
 });
+
+app.get('/api/adat', (req, res) => {
+
+    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi FROM budaya  WHERE jenis = 1';
+
+    pool.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+
+});
 //get data kesenian
 app.get('/api/kesenian', (req, res) => {
 
@@ -142,6 +155,32 @@ app.get('/api/etcw', (req, res) => {
         res.status(200).json({ success: true, data: rows });
     });
 
+});
+
+//get data komentar wisata
+app.get('/api/wisata/:id', (req, res) => {
+
+    const querySql = 'SELECT id_wisata, nama, desk, gambar, lokasi FROM wisata WHERE id_wisata = ?';
+
+    pool.query(querySql, [req.params.id], (err, rows, fields) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    })
+});
+
+//get data komentar wisata
+app.get('/api/budaya/:id', (req, res) => {
+
+    const querySql = 'SELECT id_budaya, nama, desk, gambar, lokasi FROM budaya WHERE id_budaya = ?';
+
+    pool.query(querySql, [req.params.id], (err, rows, fields) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    })
 });
 
 
