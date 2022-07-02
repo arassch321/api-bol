@@ -212,7 +212,7 @@ app.get('/api/komentarbudaya/:id', (req, res) => {
 
 // // insert data komentar
 app.post('/api/komentar', (req, res) => {
-    const { id_komentar, nama, created_at, email, komentar } = req.body;
+    const { created_at, komentar, nama, email, id_wisata, id_budaya } = req.body;
 
     // buat variabel penampung data dan query sql
     const data = {...req.body };
