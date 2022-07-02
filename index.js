@@ -187,7 +187,7 @@ app.get('/api/budaya/:id', (req, res) => {
 //get data komentar wisata
 app.get('/api/komentarwisata/:id', (req, res) => {
 
-    const querySql = 'SELECT * FROM komentar WHERE id_wisata = ?';
+    const querySql = "SELECT id_komentar, date_format(created_at,'%d-%m-%Y') AS created_at, komentar, nama, email, id_wisata, id_budaya FROM komentar WHERE id_wisata = ?";
 
     pool.query(querySql, [req.params.id], (err, rows, fields) => {
         if (err) {
@@ -200,7 +200,7 @@ app.get('/api/komentarwisata/:id', (req, res) => {
 //get data komentar budaya
 app.get('/api/komentarbudaya/:id', (req, res) => {
 
-    const querySql = 'SELECT * FROM komentar WHERE id_budaya = ?';
+    const querySql = "SELECT id_komentar, date_format(created_at,'%d-%m-%Y') AS created_at, komentar, nama, email, id_wisata, id_budaya FROM komentar WHERE id_budaya = ?";
 
     pool.query(querySql, [req.params.id], (err, rows, fields) => {
         if (err) {
