@@ -160,7 +160,7 @@ app.get('/api/etcw', (req, res) => {
 //get data komentar wisata
 app.get('/api/wisata/:id', (req, res) => {
 
-    const querySql = 'SELECT id_wisata, nama, desk, gambar, lokasi, gmaps FROM wisata WHERE id_wisata = ?';
+    const querySql = 'SELECT * FROM wisata WHERE id_wisata = ?';
 
     pool.query(querySql, [req.params.id], (err, rows, fields) => {
         if (err) {
@@ -173,7 +173,7 @@ app.get('/api/wisata/:id', (req, res) => {
 //get data komentar wisata
 app.get('/api/budaya/:id', (req, res) => {
 
-    const querySql = 'SELECT id_budaya, nama, desk, gambar, gmaps lokasi FROM budaya WHERE id_budaya = ?';
+    const querySql = 'SELECT * lokasi FROM budaya WHERE id_budaya = ?';
 
     pool.query(querySql, [req.params.id], (err, rows, fields) => {
         if (err) {
