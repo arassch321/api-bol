@@ -173,7 +173,7 @@ app.get('/api/wisata/:id', (req, res) => {
 //get data komentar wisata
 app.get('/api/budaya/:id', (req, res) => {
 
-    const querySql = 'SELECT * lokasi FROM budaya WHERE id_budaya = ?';
+    const querySql = 'SELECT * FROM budaya WHERE id_budaya = ?';
 
     pool.query(querySql, [req.params.id], (err, rows, fields) => {
         if (err) {
