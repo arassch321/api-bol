@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 //get all data Budaya
 app.get('/api/budaya', (req, res) => {
 
-    const querySql = 'SELECT * lokasi FROM budaya';
+    const querySql = 'SELECT * FROM budaya';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
@@ -49,9 +49,9 @@ app.get('/api/budaya', (req, res) => {
 });
 
 //get all data Wisata
-app.get('/api/budaya', (req, res) => {
+app.get('/api/wisata', (req, res) => {
 
-    const querySql = 'SELECT * lokasi FROM wisata';
+    const querySql = 'SELECT * FROM wisata';
 
     pool.query(querySql, (err, rows, field) => {
         if (err) {
