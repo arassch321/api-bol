@@ -34,6 +34,34 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 })
 
+//get all data Budaya
+app.get('/api/budaya', (req, res) => {
+
+    const querySql = 'SELECT * lokasi FROM budaya';
+
+    pool.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+
+});
+
+//get all data Wisata
+app.get('/api/budaya', (req, res) => {
+
+    const querySql = 'SELECT * lokasi FROM wisata';
+
+    pool.query(querySql, (err, rows, field) => {
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+        res.status(200).json({ success: true, data: rows });
+    });
+
+});
+
 //get data Adat
 app.get('/api/adat', (req, res) => {
 

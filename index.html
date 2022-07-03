@@ -15,6 +15,9 @@
             <h2>Wisata</h2>
             <h4>Method: GET</h4>
             <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/wisata" target="_blank">All Wisata</a></h3>
+            </li>
+            <li>
                 <h3><a href="https://api-bol.herokuapp.com/api/pantai" target="_blank">Pantai</a></h3>
             </li>
             <li>
@@ -31,6 +34,9 @@
             <br>
             <h2>Budaya</h2>
             <h4>Method: GET</h4>
+            <li>
+                <h3><a href="https://api-bol.herokuapp.com/api/wisata" target="_blank">All Budaya</a></h3>
+            </li>
             <li>
                 <h3><a href="https://api-bol.herokuapp.com/api/adat" target="_blank">Adat</a></h3>
             </li>
@@ -54,12 +60,14 @@
             </li>
             <li>
                 <h4>Method: GET (findbyJenisid)</h4>
-                <h3>Wisata = https://api-bol.herokuapp.com/api/komentarwisata/:id</h3>
+                <h3>Wisata = (https://api-bol.herokuapp.com/api/komentarwisata/:id)</h3>
             </li>
             <li>
                 <h4>Method: POST </h4>
-                <p>example body: { "id_komentar": "21", "created_at": "2022-06-30", "komentar": "tes komentar", "nama": "arras", "email": "arras@gmail.com" }
-                </p>
+                <p>example komentar budaya body:</p>
+                <p>{ created_at: "2022-7-3", "komentar": "tes komentar", "nama": "arras budaya", "email": "arras@gmail.com", "id_wisata": null, "id_budaya": "4" }</p>
+                <p>example komentar wisata body:</p>
+                <p>{ created_at: "2022-7-3", "komentar": "tes komentar", "nama": "arras wisata", "email": "arras@gmail.com", "id_wisata": "31", "id_budaya": null }</p>
                 <h3>Buat Komentar = (https://api-bol.herokuapp.com/api/komentar)</h3>
             </li>
         </ul>
