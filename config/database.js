@@ -3,10 +3,10 @@ const mysql = require('mysql');
 // buat konfigurasi koneksi
 const pool = mysql.createPool({
     connectionLimit: 15, //important
-    host: 'remotemysql.com',
-    user: 'sOrtNg22tx',
-    password: '6I786U8AJ3',
-    database: 'sOrtNg22tx',
+    host: 'sql12.freemysqlhosting.net',
+    user: 'sql12595982',
+    password: 'seECasVcmn',
+    database: 'sql12595982',
     debug: false
 });
 
